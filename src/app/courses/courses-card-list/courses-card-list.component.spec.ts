@@ -13,17 +13,19 @@ describe("CoursesCardListComponent", () => {
   let fixture: ComponentFixture<CoursesCardListComponent>; // O fixture vai nos auxiliar em algumas operações de teste como obter uma instância do componente, debugar o componente, etc...
   let el: DebugElement;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [CoursesModule], //CoursesModules ja traz as declarations em seu escopo para o escopo do teste
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [CoursesModule], //CoursesModules ja traz as declarations em seu escopo para o escopo do teste
+      })
+        .compileComponents()
+        .then(() => {
+          fixture = TestBed.createComponent(CoursesCardListComponent);
+          component = fixture.componentInstance;
+          el = fixture.debugElement;
+        });
     })
-      .compileComponents()
-      .then(() => {
-        fixture = TestBed.createComponent(CoursesCardListComponent);
-        component = fixture.componentInstance;
-        el = fixture.debugElement;
-      });
-  }));
+  );
 
   it("should create the component", () => {
     expect(component).toBeTruthy();
